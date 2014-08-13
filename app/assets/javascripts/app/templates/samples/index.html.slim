@@ -1,0 +1,26 @@
+div ng-controller="SamplesController as samplesCtrl"
+
+  h1 Samples
+  em Showing {{samples.length}} Samples
+
+  table.table ng-init="loadSamples()"
+    tr
+      th Id
+      th Name
+      th Sample Value
+      th
+      th
+
+    tr ng-repeat="sample in samples"
+      td {{sample.id}}
+      td
+        input ng-model="sample.name" type="text"
+      td
+        input ng-model="sample.value" type="text"
+      td
+        a.btn.btn-sm.btn-warning ng-show="sample.id" ng-click="updateSample(sample)" update
+        a.btn.btn-sm.btn-primary ng-show="!sample.id" ng-click="createSample(sample)" save
+      td
+        a.btn.btn-sm.btn-danger ng-click="deleteSample(sample)" delete
+
+  a.btn.btn-sm.btn-default ng-click="createNewSample()" create new sample

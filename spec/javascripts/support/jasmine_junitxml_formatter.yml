@@ -1,0 +1,2 @@
+---
+junit_xml_path: <%= File.join(Dir.pwd, '..', '..', 'jenkins', 'junit') %>
