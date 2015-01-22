@@ -5,13 +5,11 @@ class Api::V1::SamplesController < Api::ApplicationController
   # GET /api/v1/samples.json
   def index
     @api_v1_samples = Sample.all
-    render json: @api_v1_samples
   end
 
   # GET /api/v1/samples/1
   # GET /api/v1/samples/1.json
   def show
-    render json: @api_v1_sample
   end
 
   # POST /api/v1/samples
@@ -19,7 +17,7 @@ class Api::V1::SamplesController < Api::ApplicationController
   def create
     @api_v1_sample = Sample.new(sample_params)
     if @api_v1_sample.save
-      render json: @api_v1_sample, status: :created, location: api_v1_sample_path(@api_v1_sample)
+      render :show, status: :created, location: api_v1_sample_path(@api_v1_sample)
     else
       render json: @api_v1_sample.errors, status: :unprocessable_entity
     end
